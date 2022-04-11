@@ -17,7 +17,7 @@ RUN tar -C ${GO_PATH_PREFIX_ARG} -xzf go1.18.linux-amd64.tar.gz
 RUN export PATH=$PATH:${GO_PATH_PREFIX_ARG}/go/bin
 RUN echo "PATH=\$PATH:${GO_PATH_PREFIX_ARG}/go/bin" >> /etc/profile
 
-RUN useradd -ms /bin/bash USER_ARG
+RUN useradd -ms /bin/bash ${USER_ARG}
 USER api
 
 COPY . /go/src/gitlab.com/andersph/docker-master-class/api
