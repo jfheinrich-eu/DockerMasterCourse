@@ -4,7 +4,7 @@ LABEL maintainer="Joerg Heinrich"
 
 ARG USER_ARG=api
 ARG GO_PATH_PREFIX_ARG=/usr/local
-ARG PORT_ARG=8089
+ARG PORT_ARG=8080
 
 RUN mkdir /downloads
 WORKDIR /downloads
