@@ -1,8 +1,6 @@
 FROM amd64/debian:bullseye
 
-LABEL maintainer="Joerg Heinrich"
-
-ARG USER_ARG=api
+ARG USER_ARG=docker
 ARG GO_PATH_PREFIX_ARG=/usr/local
 ARG PORT_ARG=8080
 
@@ -11,7 +9,7 @@ ARG APP_DIR=/go/src/gitlab.com/andersph/docker-master-class/api
 RUN mkdir /downloads
 WORKDIR /downloads
 
-RUN apt update && apt install -y wget
+RUN apt update && apt install -y wget && apt install -y curl
 
 RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
 RUN tar -C ${GO_PATH_PREFIX_ARG} -xzf go1.18.linux-amd64.tar.gz

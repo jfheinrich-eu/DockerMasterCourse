@@ -4,6 +4,7 @@ server:
 
 endpoints:
   new_employee: "/employee"
+  CreateEmployee: "/employee"
 
 database:
   user: "technical_user"

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  docker_master_course:
+    container_name: docker_master_course
+    image: docker_master_course:v1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.docker.master.course
+      labels:
+        eu.jfheinrich.image.authors: "Joerg Heinrich <joerg@jfheinrich.eu>"
+        eu.jfheinrich.project: "Docker Master Course"
+        eu.jfheinrich.version: "1.1"
+        eu.jfheinrich.builddate: 
+      args:
+        GO_PATH_PREFIX_ARG: "/opt"
+        USER_ARG: "docker"
+        PORT_ARG: 8080
+    expose:
+      - "8080"
+    ports:
+      - 8989:8080
+    healthcheck:
+      test: curl -f http://localhost:8080/healthy || exit 1
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    restart: on-failure

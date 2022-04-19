@@ -1,0 +1,32 @@
+version: '2.4'
+
+services:
+
+  from_go_lang_image:
+    build:
+      context: .
+
+  from_debian_args:
+    image: api_debian_base_args:v1.1
+    build:
+      context: .
+      dockerfile: Dockerfile.debian.base.args
+      args:
+        GO_PATH_PREFIX_ARG: "/usr/local"
+        USER_ARG: "api"
+        PORT_ARG: 8089
+    ports:
+      - 8089:8089
+
+  from_debian_cmd:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian.base.cmd.args
+      args:
+        GO_PATH_PREFIX_ARG: "/usr/local"
+        USER_ARG: "api"
+  
+  from_debian_base:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian.base
