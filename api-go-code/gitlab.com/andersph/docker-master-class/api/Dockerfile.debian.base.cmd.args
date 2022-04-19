@@ -17,7 +17,7 @@ RUN export PATH=$PATH:${GO_PATH_PREFIX_ARG}/go/bin
 RUN echo "PATH=\$PATH:${GO_PATH_PREFIX_ARG}/go/bin" >> /etc/profile
 
 RUN useradd -ms /bin/bash ${USER_ARG}
-USER api
+USER ${USER_ARG}
 
 COPY . /go/src/gitlab.com/andersph/docker-master-class/api
 WORKDIR /go/src/gitlab.com/andersph/docker-master-class/api

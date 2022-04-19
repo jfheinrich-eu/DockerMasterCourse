@@ -1,6 +1,6 @@
 # Server configurations
 server:
-  port: 8089
+  port: 8080
 
 endpoints:
   new_employee: "/employee"
